@@ -681,7 +681,67 @@
             from { opacity: 0; transform: translateY(5px); }
             to { opacity: 1; transform: translateY(0); }
         }
+/* =======================================================
+   KODE TAMBAHAN KHUSUS UNTUK TAMPILAN HP (MOBILE RESPONSIVE) 
+   ======================================================= */
 
+/* 1. Mencegah layar HP bisa digeser ke kiri-kanan (menghilangkan ruang kosong) */
+html, body {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+}
+
+/* 2. Pengaturan khusus jika dibuka di layar kecil (maksimal lebar layar 768px) */
+@media screen and (max-width: 768px) {
+    
+    /* Mengubah bagian header (bar oranye) agar elemennya susun atas-bawah, bukan kiri-kanan */
+    header, nav, .navbar, .header, .top-bar { 
+        display: flex !important;
+        flex-direction: column !important; /* Ini yang bikin menu turun ke bawah logo */
+        align-items: center !important;
+        justify-content: center !important;
+        height: auto !important;
+        padding: 10px 5px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Mengecilkan semua logo di dalam header agar tidak kepenuhan */
+    header img, nav img, .navbar img, .header img {
+        max-height: 35px !important; 
+        width: auto !important;
+        margin-bottom: 8px !important;
+    }
+
+    /* Memunculkan dan merapikan menu (Tentang Kami, Info KKN, dll) ke tengah */
+    header ul, nav ul, .navbar ul, .header ul, .menu, .nav-links {
+        display: flex !important;
+        flex-wrap: wrap !important; /* Otomatis turun baris kalau teksnya kepanjangan */
+        justify-content: center !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        gap: 12px !important; /* Jarak antar teks menu */
+        width: 100% !important;
+    }
+
+    /* Mengecilkan teks menu agar pas di jari */
+    header li, nav li, .navbar li, .header li {
+        list-style: none !important;
+        font-size: 12px !important;
+        margin: 0 !important;
+    }
+
+    /* Mengecilkan judul atau subjudul yang ada di header */
+    header h1, header h2, header h3, header p, .title {
+        font-size: 14px !important;
+        text-align: center !important;
+    }
+
+    /* Menurunkan tombol fitur peta (Search, Legenda) agar tidak tertutup header oranye yang memanjang ke bawah */
+    .leaflet-top.leaflet-right {
+        top: 110px !important; 
+    }
+}
     </style>
 </head>
 <body>
